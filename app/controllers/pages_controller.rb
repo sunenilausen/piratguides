@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   layout 'frontpage', only: :welcome
-  # layout 'application', only: :htmlpage
 
   def welcome
     @js_example ="\n ```javascript \nif (confirm('Vil du lære JavaScript?')) { \n  window.location.href = 'http://hvaderkode.dk/javascript'\n} else {\n  window.location.href = 'http://hvaderkode.dk/workshops'\n}\n```"

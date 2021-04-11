@@ -5,7 +5,18 @@ module ArticlesHelper
     s = replace_collapsibles(s)
     s = remove_tasks(s)
     s = remove_prints(s)
+    s = replace_includes(s)
     s = s.gsub("```", "~~~")
+  end
+
+  def replace_includes(s)
+    include_regex = /\[\[\[([\w|-]*)\]\]\]/m
+
+    s.scan(include_regex).each do |include_key|
+      s = s.gsub("[[[#{include_key.first}]]]", Article.find_by(key: include_key.first).body)
+    end
+
+    s
   end
 
   def replace_hints(s)

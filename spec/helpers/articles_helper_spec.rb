@@ -92,5 +92,25 @@ You can duplicate the code you used to create a 'D' and then change the letters 
         expect(subject).to eq(result)
       end
     end
+
+    context "text has includes" do
+      let!(:article) { Article.find_or_create_by(title: "Pip install", key: "generic-python-installing-with-pip", body: "Go to pip.org") }
+      let!(:article_2) { Article.find_or_create_by(title: "Python install", key: "generic-python-install", body: "Go to python.org") }
+      let(:text) do
+        """
+        Install Python
+        [[[generic-python-install]]]
+
+        Install the `flask` Python module using `pip`. Make sure you are connected to the internet before you start.
+
+        [[[generic-python-installing-with-pip]]]
+        """
+      end
+
+      it "replaces triple brackets with article content" do
+        expect(subject).to include(article.body)
+        expect(subject).to include(article_2.body)
+      end
+    end
   end
 end

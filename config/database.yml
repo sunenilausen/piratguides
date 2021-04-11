@@ -6,13 +6,13 @@ default: &default
 
 development:
   <<: *default
-  database: whatiscode_dev
+  database: piratguides_dev
   host: localhost
   username: postgres
 
 test:
   <<: *default
-  database: whatiscode_test
+  database: piratguides_test
   host: localhost
   username: postgres
 

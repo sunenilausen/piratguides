@@ -1,17 +1,17 @@
 module ArticlesHelper
 
   def raspberry_markdown_to_html(s, images)
+    s = replace_image_paths(s, images)
     s = replace_includes(s)
     s = replace_hints(s)
     s = replace_collapsibles(s)
     s = remove_tasks(s)
     s = remove_prints(s)
-    s = replace_image_paths(s, images)
     s = s.gsub("```", "~~~")
   end
 
   def replace_image_paths(s, images)
-    image_blob_regex = /\/([\w]+.[\w]+)\z/
+    image_blob_regex = /\/([\w|-]+.[\w]+)\z/
 
     image_blobs = images.map do |image|
       [
@@ -34,7 +34,7 @@ module ArticlesHelper
 
     s.scan(include_regex).each do |include_key|
       article = Article.find_by(key: include_key.first)
-      s = s.gsub("[[[#{include_key.first}]]]", article.present? ? article.body : "ARTICLE NOT FOUND!")
+      s = s.gsub("[[[#{include_key.first}]]]", article.present? ? replace_image_paths(article.body, article.images) : "ARTICLE NOT FOUND!")
     end
 
     s

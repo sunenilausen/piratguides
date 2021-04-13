@@ -1,12 +1,32 @@
 module ArticlesHelper
 
-  def raspberry_markdown_to_html(s)
+  def raspberry_markdown_to_html(s, images)
     s = replace_hints(s)
     s = replace_collapsibles(s)
     s = remove_tasks(s)
     s = remove_prints(s)
     s = replace_includes(s)
+    s = replace_image_paths(s, images)
     s = s.gsub("```", "~~~")
+  end
+
+  def replace_image_paths(s, images)
+    image_blob_regex = /\/([\w]+.[\w]+)\z/
+
+    image_blobs = images.map do |image|
+      [
+        image_blob_regex.match(Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true)).to_a.second,
+        Rails.application.routes.url_helpers.rails_blob_path(image, only_path: true)
+      ]
+    end.to_h
+
+    image_path_regex = /]\(images\/([\w|\.|-]*)\)/m
+
+    s.scan(image_path_regex).each do |image_path|
+      s = s.gsub("](images/#{image_path.first})", "](#{image_blobs[image_path.first]})")
+    end
+
+    s
   end
 
   def replace_includes(s)

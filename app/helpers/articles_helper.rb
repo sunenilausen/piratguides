@@ -53,9 +53,12 @@ module ArticlesHelper
 
   def replace_hints(s)
     s.gsub("--- hints ---", "<div class='carousel carousel-slider' markdown='0'>")
-      .gsub("--- hint ---", "<div class='carousel-item red white-text' style='padding: 5px;' markdown='1'>")
+      .gsub("--- hint ---", "<div class='carousel-item red white-text' style='padding: 50px;' markdown='1'>")
       .gsub("--- /hint ---", "</div>")
-      .gsub("--- /hints ---", "</div>")
+      .gsub("--- /hints ---", "<div class='carousel-fixed-item'>
+      <a class='previous-carousel left btn-floating waves-effect btn-pirate-skyblue white-text'><i class='material-icons'>arrow_back</i></a>
+      <a class='next-carousel right btn-floating waves-effect btn-pirate-skyblue white-text'><i class='material-icons'>arrow_forward</i></a>
+    </div></div>")
   end
 
   def remove_tasks(s)

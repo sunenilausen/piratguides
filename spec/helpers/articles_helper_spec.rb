@@ -3,7 +3,7 @@ require "rails_helper"
 describe ArticlesHelper do
   describe "#raspberry_markdown_to_html" do
     let(:text) { "" }
-    let(:subject) { helper.raspberry_markdown_to_html(text) }
+    let(:subject) { helper.raspberry_markdown_to_html(text, []) }
 
     context "text has collapsible markdown" do
       let(:text) do
@@ -73,7 +73,7 @@ You need to click the + on the union block to add space for two more letters.
 --- /hint --- --- hint ---
 You can duplicate the code you used to create a 'D' and then change the letters and the X values.
 --- /hint --- --- hint ---
-![screenshot](images/coder-hint-er.png)
+![screenshot](custom_images/coder-hint-er.png)
 --- /hint --- --- /hints ---
 """
       end
@@ -86,7 +86,7 @@ You need to click the + on the union block to add space for two more letters.
 </div> <div class='carousel-item red white-text' style='padding: 5px;' markdown='1'>
 You can duplicate the code you used to create a 'D' and then change the letters and the X values.
 </div> <div class='carousel-item red white-text' style='padding: 5px;' markdown='1'>
-![screenshot](images/coder-hint-er.png)
+![screenshot](custom_images/coder-hint-er.png)
 </div> </div>
 """
         expect(subject).to eq(result)

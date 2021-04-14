@@ -16,20 +16,9 @@
 <% end %>
 <div class="browser-default">
   <div class="section scrollspy" id="front">
-    <% if @lecture.prologue? %>
-      <h1>
-        <%= "Forarbejde: #{@lecture.title}" %>
-      </h1>
-    <% else %>
-      <h1>
-        <%= @lecture.title %>
-      </h1>
-      <h2>
-        <%= @lecture.workshop.title %>
-        <%= '#' %>
-        <%= @lecture.number %>
-      </h2>
-    <% end %>
+    <h1>
+      <%= @lecture.title %>
+    </h1>
     <%= @markdown.render(@lecture.body).html_safe %>
   </div>
   <div class="page-break"></div>

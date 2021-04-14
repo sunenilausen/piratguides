@@ -35,8 +35,7 @@ module ArticlesHelper
     s.scan(include_regex).each do |include_key|
       article = Article.find_by(key: include_key.first)
       if article.present?
-        include_content = """
-        <ul class='collapsible'>
+        include_content = """<ul class='collapsible'>
           <li>
             <div class='collapsible-header'><i class='material-icons blue-text'>info</i>#{article.title}</div>
             <div class='collapsible-body' markdown='1'>#{replace_image_paths(article.body, article.images)}</div>

@@ -1,21 +1,26 @@
 # README
 
 ## System dependencies
-* [Ruby](https://www.ruby-lang.org/en/) 2.4.1
-* POSTGRESQL
+
+* [Ruby](https://www.ruby-lang.org/en/) 2.7.1
+* Node 10.19.0
+* Postgresql
+* Python
+* Yarn
+* See default.nix for more
 
 ## Configuration
-	gem install bundler
-	bundle install
-	rails db:migrate
+
+nix-shell (if you use nix)
+gem install bundler
+bundle install
+docker-compose up
+bundle exec rails db:migrate
 
 ## Start
-    rails s
+
+rails s
 
 ## Test suite
-    m
 
-## Deployment
-I recommend using heroku
-
-    git push heroku master
+bundle exec rspec

@@ -12,10 +12,12 @@ class LecturesController < ApplicationController
   # GET /lectures/new
   def new
     @lecture = Lecture.new
+    @lecture.article_insertions.build.article.build
   end
 
   # GET /lectures/1/edit
   def edit
+    #@lecture.article_insertions.build.build_article
   end
 
   # POST /lectures
@@ -75,7 +77,20 @@ class LecturesController < ApplicationController
         :prologue,
         :title,
         :workshop_id,
-        article_insertions_attributes: [:number, :article_id, :_destroy, :id]
+        article_insertions_attributes: [
+          :id,
+          :number,
+          :article_id,
+          :_destroy,
+          article_attributes: [
+            :id,
+            :title,
+            :key,
+            :body,
+            :active,
+            :_destroy
+          ]
+        ]
       )
     end
 end

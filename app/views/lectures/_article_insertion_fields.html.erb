@@ -1,6 +1,12 @@
 <div class="nested-fields article-insertion-fields">
   <%= f.input :number %>
   <div class="article-from-list">
-    <%= f.association :article %>
+    <%#= f.association :article %>
+    <%= f.simple_fields_for :article do |a| %>
+      <%= a.input :title %>
+      <%= a.input :key %>
+      <%= a.input :active, as: :boolean %>
+      <%= a.input :body, input_html: { class: 'markdown-editor' } %>
+    <% end %>
   </div>
 </div>

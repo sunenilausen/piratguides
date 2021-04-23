@@ -7,14 +7,17 @@
 * Postgresql
 * Python
 * Yarn
-* See default.nix for more
+* See default.nix for more, or just use nix! :D
+* Docker
 
 ## Configuration
 
 nix-shell (if you use nix)
 gem install bundler
 bundle install
+yarn install
 docker-compose up
+bundle exec rails db:create
 bundle exec rails db:migrate
 
 ## Start

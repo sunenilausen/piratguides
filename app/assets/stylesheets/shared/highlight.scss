@@ -75,6 +75,9 @@ code {
   padding: 0.1em 0.2em;
   overflow: auto;
   word-wrap: normal;
+  &.language-blocks3 {
+    background: white;
+  }
 }
 
 .light-highlight {

@@ -14,6 +14,7 @@ module ArticlesHelper
     s = replace_collapsibles(s)
     s = remove_tasks(s)
     s = remove_prints(s)
+    s = remove_print_onlys(s)
     s = s.gsub("```", "~~~")
   end
 
@@ -74,6 +75,10 @@ module ArticlesHelper
 
   def remove_prints(s)
     s.gsub("--- no-print ---", "").gsub("--- /no-print ---", "")
+  end
+
+  def remove_print_onlys(s)
+    s.gsub("--- print-only ---", "").gsub("--- /print-only ---", "")
   end
 
   def replace_collapsibles(s)

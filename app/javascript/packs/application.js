@@ -8,6 +8,7 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import 'simplemde/dist/simplemde.min.css'
+import "./scratch-blocks-initializer";
 import "./markdown-initializer";
 import "./slides-initializer";
 import './print';

@@ -1,6 +1,8 @@
 $(document).on('turbolinks:load', function() {
-  $("#article_insertions").on("cocoon:after-insert",
-  function() {
-    window.materializeForm.init()
-  });
+  $("#article_insertions > .links").on("cocoon:after-insert",
+    function () {
+      $(".article-add-association").first().click();
+      $(".article-add-association").first().remove();
+      window.materializeForm.init();
+    });
 });

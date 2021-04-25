@@ -17,6 +17,7 @@
       <div class="small-br"></div>
       <div class="links">
         <%= link_to_add_association 'Indsæt Ny Artikel', f, :article_insertions, class: 'waves-effect waves-light btn green' %>
+        <%= link_to_add_association 'Indsæt Eksisterende Artikel', f, :article_insertions, class: 'waves-effect waves-light btn green', partial: "existing_article_insertion_fields" %>
       </div>
       <div class="small-br"></div>
     </div>

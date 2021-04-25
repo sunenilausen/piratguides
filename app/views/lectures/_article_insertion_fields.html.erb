@@ -1,12 +1,15 @@
 <div class="nested-fields article-insertion-fields">
+  <h4> Article </h4>
   <%= f.input :number %>
-  <div class="article-from-list">
-    <%#= f.association :article %>
-    <%= f.simple_fields_for :article do |a| %>
-      <%= a.input :title %>
-      <%= a.input :key %>
-      <%= a.input :active, as: :boolean %>
-      <%= a.input :body, input_html: { class: 'markdown-editor' } %>
+
+  <div id="article">
+    <%= f.simple_fields_for :article do |article_form| %>
+      <%= render 'article_fields', f: article_form %>
     <% end %>
+    <div class="small-br"></div>
+    <div class="links">
+      <%= link_to_add_association 'Indsæt Artikelindhold', f, :article, class: 'article-add-association waves-effect waves-light btn green' %>
+    </div>
+    <div class="small-br"></div>
   </div>
 </div>

@@ -12,12 +12,10 @@ class LecturesController < ApplicationController
   # GET /lectures/new
   def new
     @lecture = Lecture.new
-    @lecture.article_insertions.build.article.build
   end
 
   # GET /lectures/1/edit
   def edit
-    #@lecture.article_insertions.build.build_article
   end
 
   # POST /lectures

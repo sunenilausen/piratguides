@@ -7,6 +7,11 @@
     <%= f.input :body, input_html: { class: 'markdown-editor' } %>
     <%= f.input :preview_image_url %>
     <%= f.input :active, as: :boolean %>
+    <%= f.file_field :images, multiple: true %>
+    <% @lecture.images.each do |image| %>
+      <%= url_for(image) %>
+      <%= image_tag image %>
+    <% end %>
     <% @lecture.articles.each do |article| %>
       <%= link_to article.title, article, class: 'btn btn-pirate-orange waves-effect waves-light' %>
     <% end %>

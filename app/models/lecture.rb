@@ -1,6 +1,8 @@
 class Lecture < ApplicationRecord
   acts_as_paranoid
 
+  has_many_attached :images
+
   has_many :article_insertions, -> { order('number ASC') }, class_name: 'ArticleLectureInsertion', inverse_of: :lecture
   accepts_nested_attributes_for :article_insertions, reject_if: :all_blank, allow_destroy: true
 

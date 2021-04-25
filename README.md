@@ -22,7 +22,7 @@ bundle exec rails db:migrate
 
 ## Start
 
-rails s
+bundle exec rails s
 
 ## Test suite
 

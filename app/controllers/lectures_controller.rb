@@ -75,6 +75,7 @@ class LecturesController < ApplicationController
         :prologue,
         :title,
         :workshop_id,
+        images: [],
         article_insertions_attributes: [
           :id,
           :number,

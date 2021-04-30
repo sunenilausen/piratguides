@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get '/:workshop/:lecture', to: 'lectures#show'
   get '/:workshop/:lecture/slides', to: 'lectures#slides'
 
-  root to: "pages#welcome"
+  root to: "lectures#index"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

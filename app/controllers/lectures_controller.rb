@@ -1,9 +1,15 @@
 class LecturesController < ApplicationController
-  load_and_authorize_resource only: [:new, :create, :update, :destroy]
+  load_and_authorize_resource
   before_action :set_lecture, only: [:edit, :update, :destroy]
   before_action :set_lecture_by_key, only: [:show, :slides, :print]
   before_action :set_renderer, only: [:show, :print]
   layout 'menuless', only: [:slides]
+
+  def index
+    @q = Lecture.accessible_by(current_ability).ransack(params[:q])
+    @lectures = @q.result(distinct: true)#.includes(:subject).includes(:language).includes(:lecture_tools).includes(:level)
+    @lectures = Lecture.accessible_by(current_ability) if @lectures.empty?
+  end
 
   # GET /lectures/1
   def show

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_03_181331) do
+ActiveRecord::Schema.define(version: 2021_04_30_195926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,20 @@ ActiveRecord::Schema.define(version: 2021_04_03_181331) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "languages", force: :cascade do |t|
+    t.string "title"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "languages_lectures", id: false, force: :cascade do |t|
+    t.bigint "language_id"
+    t.bigint "lecture_id"
+    t.index ["language_id"], name: "index_languages_lectures_on_language_id"
+    t.index ["lecture_id"], name: "index_languages_lectures_on_lecture_id"
+  end
+
   create_table "lectures", force: :cascade do |t|
     t.integer "number"
     t.string "title"
@@ -82,8 +96,31 @@ ActiveRecord::Schema.define(version: 2021_04_03_181331) do
     t.string "preview_image_url"
     t.boolean "active", default: false
     t.boolean "prologue", default: false
+    t.bigint "level_id"
     t.index ["deleted_at"], name: "index_lectures_on_deleted_at"
+    t.index ["level_id"], name: "index_lectures_on_level_id"
     t.index ["workshop_id"], name: "index_lectures_on_workshop_id"
+  end
+
+  create_table "lectures_subjects", id: false, force: :cascade do |t|
+    t.bigint "lecture_id"
+    t.bigint "subject_id"
+    t.index ["lecture_id"], name: "index_lectures_subjects_on_lecture_id"
+    t.index ["subject_id"], name: "index_lectures_subjects_on_subject_id"
+  end
+
+  create_table "lectures_tools", id: false, force: :cascade do |t|
+    t.bigint "lecture_id"
+    t.bigint "tool_id"
+    t.index ["lecture_id"], name: "index_lectures_tools_on_lecture_id"
+    t.index ["tool_id"], name: "index_lectures_tools_on_tool_id"
+  end
+
+  create_table "levels", force: :cascade do |t|
+    t.string "title"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "projects_showcases", id: false, force: :cascade do |t|
@@ -91,6 +128,20 @@ ActiveRecord::Schema.define(version: 2021_04_03_181331) do
     t.integer "showcase_id", null: false
     t.index ["project_id"], name: "index_projects_showcases_on_project_id"
     t.index ["showcase_id"], name: "index_projects_showcases_on_showcase_id"
+  end
+
+  create_table "subjects", force: :cascade do |t|
+    t.string "title"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tools", force: :cascade do |t|
+    t.string "title"
+    t.integer "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

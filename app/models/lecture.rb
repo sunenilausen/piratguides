@@ -8,6 +8,10 @@ class Lecture < ApplicationRecord
 
   has_many :articles, through: :article_insertions
   belongs_to :workshop
+  belongs_to :level, optional: true
+  has_and_belongs_to_many :tools
+  has_and_belongs_to_many :subjects
+  has_and_belongs_to_many :languages
 
   validates :title, presence: true
   validates :number, presence: true

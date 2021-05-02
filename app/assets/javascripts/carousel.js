@@ -12,5 +12,3 @@ $(document).on('turbolinks:load', function () {
     $(this).closest('.carousel').carousel('prev');
   })
 });
-
-

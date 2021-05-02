@@ -13,11 +13,11 @@
     <div class="container">
       <% if content_for? :subnav %>
         <div class="row">
-          <div class="col s12 m8 offset-m1">
+          <div class="col s12 m8">
             <%= yield %>
           </div>
-          <div class="col hide-on-small-only m3">
-            <ul class="table-of-contents">
+          <div class="col hide-on-small-only m4">
+            <ul class="tabs tabs-fixed-width tab-demo tabs-vertical">
               <%= yield :subnav %>
             </ul>
           </div>

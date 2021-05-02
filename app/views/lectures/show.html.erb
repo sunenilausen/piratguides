@@ -1,12 +1,12 @@
 <% content_for :subnav do %>
-  <li>
+  <li class="tab valign-wrapper">
     <a href="#front">
       <%= @lecture.title %>
     </a>
   </li>
   <% @lecture.article_insertions.each do |article_insertion| %>
     <% if can? :read, article_insertion.article %>
-      <li>
+      <li class="tab valign-wrapper">
         <a href="#<%= article_insertion.article.key %>">
           <%= article_insertion.article.title %>
         </a>
@@ -15,22 +15,32 @@
   <% end %>
 <% end %>
 <div class="browser-default">
-  <div class="section scrollspy" id="front">
+  <div class="section" id="front">
     <h1>
       <%= @lecture.title %>
     </h1>
     <%= @markdown.render(@lecture.body).html_safe %>
+    <br>
+    <a href="#<%= @lecture.article_insertions.first.article.key %>" class="btn right" onclick="window.scrollTo(0, 0);">Start</a>
   </div>
   <div class="page-break"></div>
   <% @lecture.article_insertions.each.with_index do |article_insertion, index| %>
     <% if can? :read, article_insertion.article %>
-      <section class="article scrollspy" id="<%= article_insertion.article.key %>">
+      <section class="article" id="<%= article_insertion.article.key %>">
         <div class="avoid-page-break">
           <%= kramdown_to_html(article_insertion.article.body, @lecture.images).html_safe %>
         </div>
+        <br>
+        <% unless @lecture.article_insertions.first == article_insertion %>
+          <a href="#<%= @lecture.article_insertions[index-1].article.key %>" class="btn left" onclick="window.scrollTo(0, 0);">Tilbage</a>
+        <% end %>
+        <% unless @lecture.article_insertions.last == article_insertion %>
+          <a href="#<%= @lecture.article_insertions[index+1].article.key %>" class="btn right" onclick="window.scrollTo(0, 0);">Næste</a>
+        <% end %>
       </section>
     <% end %>
   <% end %>
+
   <div class="fixed-action-btn vertical">
     <% if can? :manage, Lecture %>
       <%= link_to edit_lecture_path(@lecture), class: 'btn-floating btn-large btn-pirate-red' do %>

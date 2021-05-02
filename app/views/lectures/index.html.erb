@@ -1,19 +1,18 @@
 <%= search_form_for @q do |f| %>
   <div class="row">
     <div class="col s6 m3">
-      <%= f.select :level_id_eq, options_from_collection_for_select(Level.all, "id", "title", @q.level_id_eq), { include_blank: "Alle niveauer" } %>
+      <%= f.select :level_id_eq, options_from_collection_for_select(Level.all, "id", "title", @q.level_id_eq), { include_blank: "Alle niveauer" }, {:onChange => "this.form.submit()" } %>
     </div>
     <div class="col s6 m3">
-      <%= f.select :tools_id_eq, options_from_collection_for_select(Tool.all, "id", "title", @q.tools_id_eq), { include_blank: "Alle værktøjer" }  %>
+      <%= f.select :tools_id_eq, options_from_collection_for_select(Tool.all, "id", "title", @q.tools_id_eq), { include_blank: "Alle værktøjer" }, {:onChange => "this.form.submit()" }  %>
     </div>
     <div class="col s6 m3">
-      <%= f.select :subjects_id_eq, options_from_collection_for_select(Subject.all, "id", "title", @q.subjects_id_eq), { include_blank: "Alle emner" }  %>
+      <%= f.select :subjects_id_eq, options_from_collection_for_select(Subject.all, "id", "title", @q.subjects_id_eq), { include_blank: "Alle emner" }, {:onChange => "this.form.submit()" }  %>
     </div>
     <div class="col s6 m3">
-      <%= f.select :languages_id_eq, options_from_collection_for_select(Language.all, "id", "title", @q.languages_id_eq), { include_blank: "Alle programmeringssprog" }  %>
+      <%= f.select :languages_id_eq, options_from_collection_for_select(Language.all, "id", "title", @q.languages_id_eq), { include_blank: "Alle programmeringssprog" }, {:onChange => "this.form.submit()" }  %>
     </div>
   </div>
-  <%= f.submit %>
 <% end %>
 
 <div class="row">

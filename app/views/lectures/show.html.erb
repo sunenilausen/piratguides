@@ -15,6 +15,18 @@
   <% end %>
 <% end %>
 <div class="browser-default">
+  <div class="center">
+    <%= link_to @lecture.level.title, lectures_path(q: {level_id_eq: @lecture.level.id}), class: "chip" %>
+    <% @lecture.tools.each do |tool| %>
+      <%= link_to tool.title, lectures_path(q: {tools_id_eq: tool.id}), class: "chip" %>
+    <% end %>
+    <% @lecture.subjects.each do |subject| %>
+      <%= link_to subject.title, lectures_path(q: {subjects_id_eq: subject.id}), class: "chip" %>
+    <% end %>
+    <% @lecture.languages.each do |language| %>
+      <%= link_to language.title, lectures_path(q: {languages_id_eq: language.id}), class: "chip" %>
+    <% end %>
+  </div>
   <div class="section" id="front">
     <h1>
       <%= @lecture.title %>

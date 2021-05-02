@@ -9,12 +9,6 @@ body {
   overflow-x: hidden;
 }
 
-.container {
- &.subnav {
-    padding-top: 48px;
-  }
-}
-
 .accent-header {
   color: $pirate-orange;
   margin-top: 2em;

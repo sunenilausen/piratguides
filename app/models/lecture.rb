@@ -7,7 +7,7 @@ class Lecture < ApplicationRecord
   accepts_nested_attributes_for :article_insertions, reject_if: :all_blank, allow_destroy: true
 
   has_many :articles, through: :article_insertions
-  belongs_to :workshop
+  belongs_to :workshop, optional: true
   belongs_to :level, optional: true
   has_and_belongs_to_many :tools
   has_and_belongs_to_many :subjects

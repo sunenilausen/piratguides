@@ -28,12 +28,16 @@
     <% end %>
   </div>
   <div class="section" id="front">
-    <h1>
+    <h2>
       <%= @lecture.title %>
-    </h1>
+    </h2>
     <%= @markdown.render(@lecture.body).html_safe %>
-    <br>
-    <a href="#<%= @lecture.article_insertions.first.article.key %>" class="btn right" onclick="window.scrollTo(0, 0);">Start</a>
+
+    <% if @lecture.article_insertions.first %>
+      <br>
+      <a href="#<%= @lecture.article_insertions.first.article.key %>" class="btn right" onclick="window.scrollTo(0, 0);">Start</a>
+    <% end %>
+
   </div>
   <div class="page-break"></div>
   <% @lecture.article_insertions.each.with_index do |article_insertion, index| %>

@@ -81,6 +81,12 @@ class LecturesController < ApplicationController
         :prologue,
         :title,
         :workshop_id,
+        :printable,
+        :slides,
+        :level_id,
+        language_ids: [],
+        tool_ids: [],
+        subject_ids: [],
         images: [],
         article_insertions_attributes: [
           :id,

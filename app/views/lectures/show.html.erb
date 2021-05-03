@@ -75,11 +75,16 @@
         </li>
       </ul>
     <% else %>
-      <%= link_to print_lecture_path(@lecture), class: 'btn-floating green', style: "margin-right: 10px" do %>
-        <i class="material-icons">insert_drive_file</i>
+      <% if @lecture.printable? %>
+        <%= link_to print_lecture_path(@lecture), class: 'btn-floating green', style: "margin-right: 10px" do %>
+          <i class="material-icons">insert_drive_file</i>
+        <% end %>
       <% end %>
-      <%= link_to slides_lecture_path(@lecture), class: 'btn-floating yellow darken-1' do %>
-        <i class="material-icons">slideshow</i>
+
+      <% if @lecture.slides? %>
+        <%= link_to slides_lecture_path(@lecture), class: 'btn-floating yellow darken-1' do %>
+          <i class="material-icons">slideshow</i>
+        <% end %>
       <% end %>
     <% end %>
   </div>

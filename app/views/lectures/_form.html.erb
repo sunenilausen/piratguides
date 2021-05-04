@@ -5,9 +5,9 @@
     <%= f.input :title %>
     <%= f.association :workshop %>
     <%= f.association :level %>
-    <%= f.association :tools %>
-    <%= f.association :subjects %>
-    <%= f.association :languages %>
+    <%= f.association :tools, include_blank: "Vælg Værktøj" %>
+    <%= f.association :subjects, include_blank: "Vælg Emner" %>
+    <%= f.association :languages, include_blank: "Vælg Programmeringssprog" %>
     <%= f.input :body, input_html: { class: 'markdown-editor' } %>
     <%= f.input :preview_image_url %>
     <%= f.input :cc_license, as: :boolean %>

@@ -7,7 +7,7 @@ class LecturesController < ApplicationController
 
   def index
     @q = Lecture.accessible_by(current_ability).ransack(params[:q])
-    @lectures = @q.result(distinct: true)#.includes(:subject).includes(:language).includes(:lecture_tools).includes(:level)
+    @lectures = @q.result(distinct: true)
     @lectures = Lecture.accessible_by(current_ability) if @lectures.empty?
   end
 

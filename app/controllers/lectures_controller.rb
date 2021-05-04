@@ -74,6 +74,7 @@ class LecturesController < ApplicationController
     def lecture_params
       params.require(:lecture).permit(
         :active,
+        :banner,
         :body,
         :number,
         :preview,

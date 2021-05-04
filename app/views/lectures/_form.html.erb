@@ -14,7 +14,13 @@
     <%= f.input :active, as: :boolean %>
     <%= f.input :printable, as: :boolean %>
     <%= f.input :slides, as: :boolean %>
+
+    <%= label_tag :banner, "Banner" %>
+    <%= f.file_field :banner %>
+    <br>
+    <%= label_tag :images, "Billeder" %>
     <%= f.file_field :images, multiple: true %>
+    <br>
     <% @lecture.images.each do |image| %>
       <%= url_for(image) %>
       <%= image_tag image %>

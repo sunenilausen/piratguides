@@ -1,6 +1,7 @@
 class Lecture < ApplicationRecord
   acts_as_paranoid
 
+  has_one_attached :banner
   has_many_attached :images
 
   has_many :article_insertions, -> { order('number ASC') }, class_name: 'ArticleLectureInsertion', inverse_of: :lecture

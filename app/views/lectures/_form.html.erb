@@ -10,6 +10,7 @@
     <%= f.association :languages %>
     <%= f.input :body, input_html: { class: 'markdown-editor' } %>
     <%= f.input :preview_image_url %>
+    <%= f.input :cc_license, as: :boolean %>
     <%= f.input :active, as: :boolean %>
     <%= f.input :printable, as: :boolean %>
     <%= f.input :slides, as: :boolean %>

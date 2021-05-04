@@ -14,6 +14,7 @@
     <% end %>
   <% end %>
 <% end %>
+
 <div class="browser-default">
   <div class="center">
     <%= link_to @lecture.level.title, lectures_path(q: {level_id_eq: @lecture.level.id}), class: "chip" %>
@@ -37,8 +38,8 @@
       <br>
       <a href="#<%= @lecture.article_insertions.first.article.key %>" class="btn right" onclick="window.scrollTo(0, 0);">Start</a>
     <% end %>
-
   </div>
+
   <div class="page-break"></div>
   <% @lecture.article_insertions.each.with_index do |article_insertion, index| %>
     <% if can? :read, article_insertion.article %>
@@ -55,6 +56,16 @@
         <% end %>
       </section>
     <% end %>
+  <% end %>
+
+  <% if @lecture.cc_license? %>
+    <br>
+    <br>
+    <div class="card-panel grey lighten-3">
+      <p class="grey-text">
+        Udgivet under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="grey-text text-darken-2">Creative Commons license</a>
+      </p>
+    </div>
   <% end %>
 
   <div class="fixed-action-btn vertical">

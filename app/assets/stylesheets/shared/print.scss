@@ -1,4 +1,12 @@
+.print-only{
+  display: none;
+}
+
 @media print {
+  .print-only{
+    display: block;
+  }
+
   .btn-print {
     display: none !important;
   }

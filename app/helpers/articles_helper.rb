@@ -74,11 +74,11 @@ module ArticlesHelper
   end
 
   def remove_prints(s)
-    s.gsub("--- no-print ---", "").gsub("--- /no-print ---", "")
+    s.gsub("--- no-print ---", "<div class='no-print'>").gsub("--- /no-print ---", "</div>")
   end
 
   def remove_print_onlys(s)
-    s.gsub("--- print-only ---", "").gsub("--- /print-only ---", "")
+    s.gsub("--- print-only ---", "<div class='print-only'>").gsub("--- /print-only ---", "</div>")
   end
 
   def replace_collapsibles(s)

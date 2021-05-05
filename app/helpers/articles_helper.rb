@@ -31,7 +31,7 @@ module ArticlesHelper
     image_path_regex = /]\(images\/([\w|\.|-]*)\)/m
 
     s.scan(image_path_regex).each do |image_path|
-      s = s.gsub("](images/#{image_path.first})", "](#{image_blobs[image_path.first]})")
+      s = s.gsub("images/#{image_path.first}", "#{image_blobs[image_path.first]}")
     end
 
     s

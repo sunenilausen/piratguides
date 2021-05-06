@@ -6,36 +6,40 @@
   display: -webkit-flex;
   display: flex;
 }
+
+.tabs-vertical .tab a {
+  border-left: 4px solid #ffffff;
+}
+
+.tabs-vertical .tab a.active {
+  -moz-transition: border-color .5s ease;
+  -o-transition: border-color .5s ease;
+  -webkit-transition: border-color .5s ease;
+  transition: border-color .5s ease;
+  border-left: 4px solid $pirate-pink;
+  font-weight: 600;
+}
+
+.tabs-vertical .tab:first-child a {
+  border-left: 4px solid $pirate-pink;
+  font-size: 18px;
+}
+
+.tabs-vertical .tab a:hover {
+  border-left: 4px solid $pirate-skyblue;
+}
+
 .tabs-vertical .tab {
   text-align: left;
   width: 100%;
 }
 
-.tabs-vertical .tab a {
-  border-left: 3px solid #ffffff;
-}
-
-.tabs-vertical .tab .active {
-  -moz-transition: border-color .5s ease;
-  -o-transition: border-color .5s ease;
-  -webkit-transition: border-color .5s ease;
-  transition: border-color .5s ease;
-  border-left: 3px solid #424242;
-  font-weight: 600;
-}
-.tabs-vertical .tab :hover {
-  border-left: 3px solid #eeeeee;
-}
 .tabs-vertical .indicator {
   display: none;
 }
 .tabs-vertical .tab-content {
-  /*  make tab content scrollable , by define height, then overflow: auto*/
   padding: 0;
   margin: 0;
   height: 100%;
   width: 100%;
-
-  /*  make tab content scrollable */
-
 }

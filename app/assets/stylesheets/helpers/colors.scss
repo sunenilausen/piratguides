@@ -28,6 +28,26 @@
   }
 }
 
+.pirate-pink-text {
+  color: $pirate-pink !important;
+  &:hover {
+    color: $pirate-pink-light !important;
+  }
+  &:active {
+    color: $pirate-pink-dark !important;
+  }
+}
+
+.pirate-yellow-text {
+  color: $pirate-yellow !important;
+  &:hover {
+    color: $pirate-yellow-light !important;
+  }
+  &:active {
+    color: $pirate-yellow-dark !important;
+  }
+}
+
 .pirate-orange-bg {
   background-color: $pirate-orange;
 }
@@ -38,4 +58,16 @@
 
 .pirate-skyblue-bg {
   background-color: $pirate-skyblue;
+}
+
+.pirate-skyblue-bg-light-2 {
+  background-color: $pirate-skyblue-light-2;
+}
+
+.pirate-pink-bg {
+  background-color: $pirate-pink;
+}
+
+.pirate-yellow-bg {
+  background-color: $pirate-yellow;
 }

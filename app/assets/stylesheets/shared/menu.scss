@@ -1,4 +1,22 @@
+.navbar-fixed, nav.nav-extended, .nav-wrapper {
+  height: 140px;
+  font-family: Bungee;
+}
+.nav-text {
+  height: 140px;
+  font-size: 16px;
+  color: black;
+  display: flex;
+  align-items: center;
+  &:hover {
+    color: #ec008c;
+    background-color: unset;
+  }
+}
 @media only screen and (max-width: 992px) {
+  .navbar-fixed, nav.nav-extended, .nav-wrapper, .nav-text {
+    height: 80px;
+  }
   nav {
     .brand-logo {
       left: 0%;
@@ -6,6 +24,7 @@
     }
   }
 }
+
 
 .brand-logo {
   display: block;

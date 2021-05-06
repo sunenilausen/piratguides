@@ -1,13 +1,13 @@
 <% content_for :subnav do %>
-  <li class="tab valign-wrapper">
-    <a href="#front">
+  <li class="tab valign-wrapper pirate-pink-bg">
+    <a href="#front" class="pirate-yellow-text bungee">
       <%= @lecture.title %>
     </a>
   </li>
   <% @lecture.article_insertions.each do |article_insertion| %>
     <% if can? :read, article_insertion.article %>
       <li class="tab valign-wrapper">
-        <a href="#<%= article_insertion.article.key %>">
+        <a href="#<%= article_insertion.article.key %>" class="black-text">
           <%= article_insertion.article.title %>
         </a>
       </li>

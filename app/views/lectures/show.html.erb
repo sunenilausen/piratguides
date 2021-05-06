@@ -1,12 +1,12 @@
 <% content_for :subnav do %>
-  <li class="tab valign-wrapper pirate-pink-bg">
+  <li class="tab pirate-pink-bg">
     <a href="#front" class="pirate-yellow-text bungee">
       <%= @lecture.title %>
     </a>
   </li>
   <% @lecture.article_insertions.each do |article_insertion| %>
     <% if can? :read, article_insertion.article %>
-      <li class="tab valign-wrapper">
+      <li class="tab">
         <a href="#<%= article_insertion.article.key %>" class="black-text">
           <%= article_insertion.article.title %>
         </a>
@@ -16,18 +16,16 @@
 <% end %>
 
 <div class="browser-default">
-  <div class="center">
-    <%= link_to @lecture.level.title, lectures_path(q: {level_id_eq: @lecture.level.id}), class: "chip" %>
-    <% @lecture.tools.each do |tool| %>
-      <%= link_to tool.title, lectures_path(q: {tools_id_eq: tool.id}), class: "chip" %>
-    <% end %>
-    <% @lecture.subjects.each do |subject| %>
-      <%= link_to subject.title, lectures_path(q: {subjects_id_eq: subject.id}), class: "chip" %>
-    <% end %>
-    <% @lecture.languages.each do |language| %>
-      <%= link_to language.title, lectures_path(q: {languages_id_eq: language.id}), class: "chip" %>
-    <% end %>
-  </div>
+  <%= link_to @lecture.level.title, lectures_path(q: {level_id_eq: @lecture.level.id}), class: "chip" %>
+  <% @lecture.tools.each do |tool| %>
+    <%= link_to tool.title, lectures_path(q: {tools_id_eq: tool.id}), class: "chip" %>
+  <% end %>
+  <% @lecture.subjects.each do |subject| %>
+    <%= link_to subject.title, lectures_path(q: {subjects_id_eq: subject.id}), class: "chip" %>
+  <% end %>
+  <% @lecture.languages.each do |language| %>
+    <%= link_to language.title, lectures_path(q: {languages_id_eq: language.id}), class: "chip" %>
+  <% end %>
   <div class="section" id="front">
     <h2>
       <%= @lecture.title %>

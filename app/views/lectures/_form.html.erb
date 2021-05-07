@@ -8,8 +8,8 @@
     <%= f.association :tools, include_blank: "Vælg Værktøj" %>
     <%= f.association :subjects, include_blank: "Vælg Emner" %>
     <%= f.association :languages, include_blank: "Vælg Programmeringssprog" %>
-    <%= f.input :body, input_html: { class: 'markdown-editor' } %>
-    <%= f.input :license, input_html: { class: 'markdown-editor' } %>
+    <%= f.input :body, input_html: { class: 'markdown-editor' }, wrapper_html: { class: 'mt-3' } %>
+    <%= f.input :license, input_html: { class: 'markdown-editor' }, wrapper_html: { class: 'mt-3' } %>
     <%= f.input :active, as: :boolean %>
     <%= f.input :printable, as: :boolean %>
     <%= f.input :slides, as: :boolean %>

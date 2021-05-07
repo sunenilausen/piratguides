@@ -1,0 +1,15 @@
+.CodeMirror,
+.CodeMirror-scroll {
+    max-height: 300px;
+}
+.CodeMirror-fullscreen.CodeMirror {
+    max-height: none;
+}
+
+.CodeMirror-fullscreen .CodeMirror-scroll {
+    max-height: none;
+}
+.editor-toolbar, .CodeMirror, .editor-statusbar, .editor-preview-side {
+  top: 20px;
+  padding-top: 20px;
+}

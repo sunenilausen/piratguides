@@ -21,7 +21,6 @@
     <%= f.file_field :images, multiple: true %>
     <br>
     <% @lecture.images.each do |image| %>
-      <%= url_for(image) %>
       <%= image_tag image %>
     <% end %>
     <% @lecture.articles.each do |article| %>

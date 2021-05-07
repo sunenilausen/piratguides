@@ -25,6 +25,12 @@
       <% else %>
         <%= yield %>
       <% end %>
+
+      <% unless current_user.present? %>
+        <%= link_to new_user_session_path, class: "fixed-left-action-btn" do %>
+          <i class="material-icons grey-text">login</i>
+        <% end %>
+      <% end %>
     </div>
   </body>
 </html>

@@ -25,3 +25,13 @@
     background-color: $pirate-orange-light;
   }
 }
+
+
+.fixed-left-action-btn {
+    position: fixed;
+    left: 23px;
+    bottom: 23px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    z-index: 997;
+}

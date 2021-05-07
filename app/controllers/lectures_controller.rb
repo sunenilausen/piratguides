@@ -85,6 +85,7 @@ class LecturesController < ApplicationController
         :printable,
         :slides,
         :cc_license,
+        :license,
         :level_id,
         language_ids: [],
         tool_ids: [],

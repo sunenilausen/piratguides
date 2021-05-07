@@ -9,8 +9,7 @@
     <%= f.association :subjects, include_blank: "Vælg Emner" %>
     <%= f.association :languages, include_blank: "Vælg Programmeringssprog" %>
     <%= f.input :body, input_html: { class: 'markdown-editor' } %>
-    <%= f.input :preview_image_url %>
-    <%= f.input :cc_license, as: :boolean %>
+    <%= f.input :license, input_html: { class: 'markdown-editor' } %>
     <%= f.input :active, as: :boolean %>
     <%= f.input :printable, as: :boolean %>
     <%= f.input :slides, as: :boolean %>

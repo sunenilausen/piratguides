@@ -56,13 +56,9 @@
     <% end %>
   <% end %>
 
-  <% if @lecture.cc_license? %>
-    <br>
-    <br>
-    <div class="card-panel grey lighten-3">
-      <p class="grey-text">
-        Udgivet under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="grey-text text-darken-2">Creative Commons license</a>
-      </p>
+  <% if @lecture.license.present? %>
+    <div class="license">
+      <%= kramdown_to_html(@lecture.license, @lecture.images).html_safe %>
     </div>
   <% end %>
 

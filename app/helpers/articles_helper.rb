@@ -13,6 +13,7 @@ module ArticlesHelper
     s = replace_hints(s)
     s = replace_collapsibles(s)
     s = remove_tasks(s)
+    s = remove_challenges(s)
     s = remove_prints(s)
     s = remove_print_onlys(s)
     s = s.gsub("```", "~~~")
@@ -71,6 +72,10 @@ module ArticlesHelper
 
   def remove_tasks(s)
     s.gsub("--- task ---", "").gsub("--- /task ---", "")
+  end
+
+  def remove_challenges(s)
+    s.gsub("--- challenge ---", "").gsub("--- /challenge ---", "")
   end
 
   def remove_prints(s)

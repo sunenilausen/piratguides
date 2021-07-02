@@ -8,7 +8,9 @@
     <% end %>
     <div class="small-br"></div>
     <div class="links">
-      <%= link_to_add_association 'Indsæt Artikelindhold', f, :article, class: 'article-add-association waves-effect waves-light btn green' %>
+      <% unless f.object.persisted? %>
+        <%= link_to_add_association 'Indsæt Artikelindhold', f, :article, class: 'article-add-association waves-effect waves-light btn green' %>
+      <% end %>
     </div>
     <div class="small-br"></div>
   </div>

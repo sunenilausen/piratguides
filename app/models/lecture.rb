@@ -14,8 +14,11 @@ class Lecture < ApplicationRecord
   has_and_belongs_to_many :subjects
   has_and_belongs_to_many :languages
 
+  belongs_to :author, class_name: "User", inverse_of: :lectures
+
   validates :title, presence: true
   validates :number, presence: true
+  validates :community, inclusion: [true],if: Proc.new { |l| l.author.volunteer? }
 
   def preview_image
     return preview_image_url if preview_image_url.present?

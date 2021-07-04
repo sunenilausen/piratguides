@@ -6,9 +6,9 @@ class LecturesController < ApplicationController
   layout 'menuless', only: [:slides]
 
   def index
-    @q = Lecture.accessible_by(current_ability).ransack(params[:q])
+    @q = Lecture.where(community: false).accessible_by(current_ability).ransack(params[:q])
     @lectures = @q.result(distinct: true)
-    @lectures = Lecture.accessible_by(current_ability) if @lectures.empty?
+    @lectures = Lecture.where(community: false).accessible_by(current_ability) if @lectures.empty?
   end
 
   # GET /lectures/1
@@ -18,6 +18,7 @@ class LecturesController < ApplicationController
   # GET /lectures/new
   def new
     @lecture = Lecture.new
+    @lecture.author = current_user
   end
 
   # GET /lectures/1/edit
@@ -27,6 +28,7 @@ class LecturesController < ApplicationController
   # POST /lectures
   def create
     @lecture = Lecture.new(lecture_params)
+    @lecture.author = current_user
     if @lecture.save
       redirect_to @lecture, notice: 'Lecture was successfully created.'
     else

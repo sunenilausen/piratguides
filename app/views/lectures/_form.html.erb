@@ -13,7 +13,7 @@
     <%= f.input :active, as: :boolean %>
     <%= f.input :printable, as: :boolean %>
     <%= f.input :slides, as: :boolean %>
-
+    <%= f.input :community, as: :boolean, disabled: current_user.volunteer? %>
     <%= label_tag :banner, "Banner" %>
     <%= f.file_field :banner %>
     <br>

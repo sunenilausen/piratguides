@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_121655) do
+ActiveRecord::Schema.define(version: 2021_07_04_162805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 2021_05_07_121655) do
 
   create_table "article_lecture_insertions", force: :cascade do |t|
     t.integer "number"
-    t.integer "article_id"
-    t.integer "lecture_id"
+    t.bigint "article_id"
+    t.bigint "lecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_article_lecture_insertions_on_article_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_05_07_121655) do
     t.datetime "deleted_at"
     t.text "preview"
     t.string "preview_image_url"
-    t.integer "category_id"
+    t.bigint "category_id"
     t.text "preview_code"
     t.boolean "documentation", default: true
     t.boolean "active", default: false
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2021_05_07_121655) do
     t.integer "number"
     t.string "title"
     t.text "body"
-    t.integer "workshop_id"
+    t.bigint "workshop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
@@ -108,6 +108,9 @@ ActiveRecord::Schema.define(version: 2021_05_07_121655) do
     t.boolean "slides", default: false
     t.boolean "cc_license", default: true
     t.text "license"
+    t.bigint "author_id"
+    t.boolean "community", default: true
+    t.index ["author_id"], name: "index_lectures_on_author_id"
     t.index ["deleted_at"], name: "index_lectures_on_deleted_at"
     t.index ["level_id"], name: "index_lectures_on_level_id"
     t.index ["workshop_id"], name: "index_lectures_on_workshop_id"
@@ -135,8 +138,8 @@ ActiveRecord::Schema.define(version: 2021_05_07_121655) do
   end
 
   create_table "projects_showcases", id: false, force: :cascade do |t|
-    t.integer "project_id", null: false
-    t.integer "showcase_id", null: false
+    t.bigint "project_id", null: false
+    t.bigint "showcase_id", null: false
     t.index ["project_id"], name: "index_projects_showcases_on_project_id"
     t.index ["showcase_id"], name: "index_projects_showcases_on_showcase_id"
   end
@@ -173,6 +176,7 @@ ActiveRecord::Schema.define(version: 2021_05_07_121655) do
     t.boolean "student", default: false
     t.boolean "admin", default: false
     t.datetime "deleted_at"
+    t.boolean "translator", default: false
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -192,4 +196,6 @@ ActiveRecord::Schema.define(version: 2021_05_07_121655) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "articles", "categories"
+  add_foreign_key "lectures", "workshops"
 end

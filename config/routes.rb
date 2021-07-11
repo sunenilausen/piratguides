@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get '/docs', to: 'articles#index'
+  get '/guides', to: 'lectures#index'
+  get '/community', to: 'community#index'
 
   resources :articles do
     member do

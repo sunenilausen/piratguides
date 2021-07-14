@@ -3,6 +3,7 @@ class Lecture < ApplicationRecord
 
   has_one_attached :banner
   has_many_attached :images
+  has_many_attached :resources
 
   has_many :article_insertions, -> { order('number ASC') }, class_name: 'ArticleLectureInsertion', inverse_of: :lecture
   accepts_nested_attributes_for :article_insertions, reject_if: :all_blank, allow_destroy: true

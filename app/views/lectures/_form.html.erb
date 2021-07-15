@@ -16,7 +16,7 @@
     <%= f.input :community, as: :boolean, disabled: current_user.volunteer? %>
     <%= label_tag :banner, "Banner" %>
     <%= f.file_field :banner %>
-    <%= image_tag banner if banner.present? %>
+    <%= image_tag @lecture.banner if @lecture.banner.present? %>
     <br>
     <%= label_tag :images, "Billeder" %>
     <%= f.file_field :images, multiple: true %>

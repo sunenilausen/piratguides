@@ -78,6 +78,7 @@ class LecturesController < ApplicationController
         :active,
         :banner,
         :body,
+        :community,
         :number,
         :preview,
         :preview_image_url,

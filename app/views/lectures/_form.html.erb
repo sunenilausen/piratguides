@@ -27,7 +27,7 @@
     <%= label_tag :resources, "Filer" %>
     <%= f.file_field :resources, multiple: true %>
     <% @lecture.resources.each do |resource| %>
-      <%= resource.path %>
+      <%= rails_blob_path(resource, only_path: true) %>
     <% end %>
     <br>
     <% @lecture.articles.each do |article| %>

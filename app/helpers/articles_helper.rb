@@ -1,16 +1,16 @@
 module ArticlesHelper
 
-  def kramdown_to_html(s, images)
+  def kramdown_to_html(s, images, resources)
     Kramdown::Document.new(
-      raspberry_markdown_to_html(s, images),
+      raspberry_markdown_to_html(s, images, resources),
       { input: "Kramdown", parse_block_html: true, parse_span_html: true }
     ).to_html
   end
 
-  def raspberry_markdown_to_html(s, images)
+  def raspberry_markdown_to_html(s, images, resources)
     s = replace_includes(s)
     s = replace_image_paths(s, images)
-    s = replace_resource_paths(s, images)
+    s = replace_resource_paths(s, resources)
     s = replace_hints(s)
     s = replace_collapsibles(s)
     s = remove_tasks(s)

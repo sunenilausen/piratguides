@@ -43,7 +43,7 @@
     <% if can? :read, article_insertion.article %>
       <section class="article" id="<%= article_insertion.article.key %>">
         <div class="avoid-page-break">
-          <%= kramdown_to_html(article_insertion.article.body, @lecture.images).html_safe %>
+          <%= kramdown_to_html(article_insertion.article.body, @lecture.images, @lecture.resources).html_safe %>
         </div>
         <br>
         <% unless @lecture.article_insertions.first == article_insertion %>
@@ -58,7 +58,7 @@
 
   <% if @lecture.license.present? %>
     <div class="license">
-      <%= kramdown_to_html(@lecture.license, @lecture.images).html_safe %>
+      <%= kramdown_to_html(@lecture.license, @lecture.images, @lecture.resources).html_safe %>
     </div>
   <% end %>
 

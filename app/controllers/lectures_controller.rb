@@ -93,6 +93,7 @@ class LecturesController < ApplicationController
         tool_ids: [],
         subject_ids: [],
         images: [],
+        resources: [],
         article_insertions_attributes: [
           :id,
           :number,

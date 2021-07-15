@@ -49,7 +49,7 @@ module ArticlesHelper
       ]
     end.to_h
 
-    resource_path_regex = /]\(resources\/([\w|\.|-]*)\)/m
+    resource_path_regex = /resources\/([\w|\.|-]*)/m
 
     s.scan(resource_path_regex).each do |resource_path|
       s = s.gsub("resources/#{resource_path.first}", "#{resource_blobs[resource_path.first]}")

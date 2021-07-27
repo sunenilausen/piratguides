@@ -1,15 +1,16 @@
 module ArticlesHelper
 
-  def kramdown_to_html(s, images)
+  def kramdown_to_html(s, images, resources)
     Kramdown::Document.new(
-      raspberry_markdown_to_html(s, images),
+      raspberry_markdown_to_html(s, images, resources),
       { input: "Kramdown", parse_block_html: true, parse_span_html: true }
     ).to_html
   end
 
-  def raspberry_markdown_to_html(s, images)
+  def raspberry_markdown_to_html(s, images, resources)
     s = replace_includes(s)
     s = replace_image_paths(s, images)
+    s = replace_resource_paths(s, resources)
     s = replace_hints(s)
     s = replace_collapsibles(s)
     s = remove_tasks(s)
@@ -33,6 +34,25 @@ module ArticlesHelper
 
     s.scan(image_path_regex).each do |image_path|
       s = s.gsub("images/#{image_path.first}", "#{image_blobs[image_path.first]}")
+    end
+
+    s
+  end
+
+  def replace_resource_paths(s, resources)
+    resource_blob_regex = /\/([\w|-]+.[\w]+)\z/
+
+    resource_blobs = resources.map do |resource|
+      [
+        resource_blob_regex.match(Rails.application.routes.url_helpers.rails_blob_path(resource, only_path: true)).to_a.second,
+        Rails.application.routes.url_helpers.rails_blob_path(resource, only_path: true)
+      ]
+    end.to_h
+
+    resource_path_regex = /resources\/([\w|\.|-]*)/m
+
+    s.scan(resource_path_regex).each do |resource_path|
+      s = s.gsub("resources/#{resource_path.first}", "#{resource_blobs[resource_path.first]}")
     end
 
     s

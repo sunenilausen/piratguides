@@ -78,6 +78,7 @@ class LecturesController < ApplicationController
         :active,
         :banner,
         :body,
+        :community,
         :number,
         :preview,
         :preview_image_url,
@@ -93,6 +94,7 @@ class LecturesController < ApplicationController
         tool_ids: [],
         subject_ids: [],
         images: [],
+        resources: [],
         article_insertions_attributes: [
           :id,
           :number,

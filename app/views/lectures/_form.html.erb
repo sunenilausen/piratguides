@@ -16,13 +16,20 @@
     <%= f.input :community, as: :boolean, disabled: current_user.volunteer? %>
     <%= label_tag :banner, "Banner" %>
     <%= f.file_field :banner %>
+    <%= image_tag @lecture.banner if @lecture.banner.present? %>
     <br>
     <%= label_tag :images, "Billeder" %>
     <%= f.file_field :images, multiple: true %>
-    <br>
     <% @lecture.images.each do |image| %>
       <%= image_tag image %>
     <% end %>
+    <br>
+    <%= label_tag :resources, "Filer" %>
+    <%= f.file_field :resources, multiple: true %>
+    <% @lecture.resources.each do |resource| %>
+      <%= rails_blob_path(resource, only_path: true) %>
+    <% end %>
+    <br>
     <% @lecture.articles.each do |article| %>
       <%= link_to article.title, article, class: 'btn btn-pirate-orange waves-effect waves-light' %>
     <% end %>

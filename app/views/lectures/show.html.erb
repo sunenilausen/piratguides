@@ -7,7 +7,7 @@
   <% @lecture.article_insertions.each do |article_insertion| %>
     <% if can? :read, article_insertion.article %>
       <li class="tab">
-        <a href="#<%= article_insertion.article.key %>" class="black-text">
+        <a href="#<%= article_insertion.article.key %>" class="black-text" onclick="window.scrollTo(0, 0);>
           <%= article_insertion.article.title %>
         </a>
       </li>
